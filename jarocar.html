@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>JAROCAR VAG Serwis · Maliszew</title>
+<meta name="description" content="Serwis samochodów grupy VAG w Maliszewie: diagnostyka, elektronika, rozrząd, turbosprężarki, klimatyzacja R-1234yf.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --y:#FFC400; --y2:#FFD84D;
+  --bg:#0F0F10; --bg2:#17171A; --card:#1E1E22; --line:#2E2E34;
+  --txt:#F5F5F2; --mute:#A3A3AB; --ink:#111;
+  --r:18px;
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:80px}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;line-height:1;letter-spacing:.01em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.hazard{height:10px;background:repeating-linear-gradient(-45deg,var(--y) 0 18px,#111 18px 36px)}
+.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.stars{display:inline-block;width:100px;height:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 18'%3E%3Cpath fill='%23FFC400' d='M10 .8l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L1.2 7.2l6.1-.8z'/%3E%3C/svg%3E") repeat-x left center/20px 18px}
+
+/* NAV */
+header{position:sticky;top:0;z-index:50;background:rgba(15,15,16,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed';font-weight:800;font-size:26px;text-transform:uppercase;letter-spacing:.02em}
+.logo i{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--y);color:var(--ink);font-style:normal;font-size:22px}
+.logo small{display:block;font-family:Inter;font-weight:600;font-size:10px;letter-spacing:.18em;color:var(--y);line-height:1;margin-top:2px}
+nav{display:flex;align-items:center;gap:26px;font-weight:500;font-size:15px}
+nav a:not(.btn){color:var(--mute);transition:color 150ms ease}
+@media(hover:hover) and (pointer:fine){nav a:not(.btn):hover{color:var(--y)}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:999px;font-weight:700;font-size:15px;border:2px solid transparent;cursor:pointer;font-family:inherit;
+  transition:transform 160ms var(--ease-out),background-color 150ms ease,border-color 150ms ease,color 150ms ease}
+.btn:active{transform:scale(.97)}
+.btn-y{background:var(--y);color:var(--ink)}
+.btn-o{border-color:var(--line);color:var(--txt)}
+@media(hover:hover) and (pointer:fine){
+  .btn-y:hover{background:var(--y2)}
+  .btn-o:hover{border-color:var(--y);color:var(--y)}
+}
+.btn-sm{padding:10px 18px;font-size:14px}
+@media(max-width:820px){nav a:not(.btn){display:none}}
+
+/* HERO */
+.hero{position:relative;padding:72px 0 80px;overflow:hidden;background:
+  radial-gradient(900px 500px at 85% 10%,rgba(255,196,0,.18),transparent 60%),
+  radial-gradient(600px 400px at 0% 100%,rgba(255,196,0,.08),transparent 60%)}
+.hero::before{content:"VAG";position:absolute;right:-30px;bottom:-70px;font-family:'Barlow Condensed';font-weight:800;font-size:clamp(220px,34vw,460px);line-height:1;color:transparent;-webkit-text-stroke:2px rgba(255,196,0,.14);pointer-events:none}
+.hero .grid{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center;position:relative}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:1px solid rgba(255,196,0,.4);background:rgba(255,196,0,.08);color:var(--y);border-radius:999px;font-size:13px;font-weight:600;margin-bottom:22px}
+.dot{width:8px;height:8px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 4px rgba(61,220,132,.2)}
+h1{font-size:clamp(46px,8vw,92px);font-weight:800}
+h1 em{font-style:normal;color:var(--y)}
+.lead{margin:22px 0 32px;font-size:18px;color:var(--mute);max-width:560px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.stats{display:flex;gap:34px;margin-top:40px;flex-wrap:wrap}
+.stats b{display:block;font-family:'Barlow Condensed';font-size:40px;color:var(--y);line-height:1}
+.stats span{font-size:13px;color:var(--mute)}
+.card-info{background:linear-gradient(160deg,var(--card),#18181b);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+.lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.card-info .tel{font-family:'Barlow Condensed';font-weight:800;font-size:44px;color:var(--y);line-height:1;margin-bottom:20px;display:block}
+.card-info .row{padding:14px 0;border-top:1px solid var(--line);font-size:15px}
+.card-info .row b{display:block;font-weight:600}
+.open{display:inline-flex;align-items:center;gap:8px;color:#3ddc84;font-weight:600;font-size:14px}
+.open .dot{width:7px;height:7px;box-shadow:none}
+@media(max-width:900px){.hero .grid{grid-template-columns:1fr}.hero{padding:48px 0 56px}}
+
+/* hero entrance (one-time, staggered, ease-out) */
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hero .grid>div>*,.hero .card-info{animation:up 450ms var(--ease-out) both;animation-delay:calc(var(--i,0)*60ms)}
+.hero .card-info{animation-delay:240ms}
+
+/* MARQUEE (constant motion = linear) */
+.marq{background:var(--y);color:var(--ink);overflow:hidden;white-space:nowrap;padding:14px 0;font-family:'Barlow Condensed';font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.04em}
+.marq div{display:inline-block;animation:mq 30s linear infinite}
+.marq span{margin:0 22px}
+.marq span::after{content:"";display:inline-block;width:9px;height:9px;margin-left:44px;background:var(--ink);opacity:.5;transform:rotate(45deg)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:88px 0}
+.eyebrow{color:var(--y);font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+h2{font-size:clamp(38px,6vw,64px);font-weight:800;margin-bottom:14px}
+h2 em{font-style:normal;color:var(--y)}
+.sub{color:var(--mute);max-width:600px;font-size:17px}
+
+/* SERVICES */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.s{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;overflow:hidden;
+  transition:transform 200ms var(--ease-out),border-color 150ms ease}
+.s::after{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:var(--y);transform:scaleX(0);transform-origin:left;transition:transform 250ms var(--ease-out)}
+.s:active{transform:scale(.985)}
+@media(hover:hover) and (pointer:fine){
+  .s:hover{transform:translateY(-3px);border-color:rgba(255,196,0,.5)}
+  .s:hover::after{transform:scaleX(1)}
+}
+.s .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:rgba(255,196,0,.12);color:var(--y);font-size:26px;margin-bottom:18px}
+.s h3{font-size:28px;margin-bottom:8px}
+.s p{color:var(--mute);font-size:15px;margin-bottom:14px}
+.s ul{list-style:none;font-size:14px}
+.s li{padding:5px 0 5px 18px;border-top:1px solid var(--line);position:relative}
+.s li::before{content:"";position:absolute;left:0;top:50%;width:8px;height:2px;margin-top:-1px;background:var(--y)}
+@media(max-width:900px){.svc{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.svc{grid-template-columns:1fr}}
+
+/* WHY */
+.why{background:var(--bg2);border-block:1px solid var(--line)}
+.why .grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.pts{display:grid;gap:14px;margin-top:28px}
+.pt{display:flex;gap:16px;padding:18px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
+.pt b{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:var(--y);color:var(--ink);font-family:'Barlow Condensed';font-size:22px}
+.pt h4{font-size:17px;margin-bottom:2px}.pt p{color:var(--mute);font-size:14px}
+.ac{position:relative;border-radius:24px;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,rgba(255,196,0,.22),transparent 65%),var(--card);min-height:400px;display:grid;place-items:center;padding:30px;text-align:center;overflow:hidden}
+.ac .big{font-family:'Barlow Condensed';font-weight:800;font-size:clamp(90px,14vw,170px);line-height:.9;color:var(--y)}
+.ac .stars{margin-top:10px}
+.ac p{color:var(--mute);margin-top:12px;max-width:300px;margin-inline:auto}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px}
+.chips span{padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:600;background:#111}
+@media(max-width:900px){.why .grid{grid-template-columns:1fr}}
+
+/* REVIEWS */
+.rev-head{display:flex;flex-wrap:wrap;gap:30px;align-items:flex-end;justify-content:space-between;margin-bottom:40px}
+.score{display:flex;align-items:center;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 26px}
+.score .n{font-family:'Barlow Condensed';font-weight:800;font-size:72px;color:var(--y);line-height:.9}
+.score small{display:block;color:var(--mute);font-size:13px;margin-top:2px}
+.rev{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.r{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden;
+  transition:transform 200ms var(--ease-out),border-color 150ms ease}
+.r.feat{background:linear-gradient(150deg,#2a2400,var(--card) 60%);border-color:rgba(255,196,0,.45)}
+.r::before{content:"\201C";position:absolute;right:22px;top:-4px;font-family:'Barlow Condensed';font-size:120px;color:rgba(255,196,0,.18);line-height:1;pointer-events:none}
+@media(hover:hover) and (pointer:fine){.r:hover{transform:translateY(-3px);border-color:rgba(255,196,0,.5)}}
+.r blockquote{font-size:17px;line-height:1.65;flex:1}
+.r.feat blockquote{font-size:20px}
+.who{display:flex;align-items:center;gap:12px}
+.av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;font-size:17px}
+.who b{display:block;font-size:15px;line-height:1.2}.who small{color:var(--mute);font-size:12.5px}
+.gtag{margin-left:auto;font-size:11px;font-weight:700;color:var(--mute);border:1px solid var(--line);padding:3px 9px;border-radius:999px}
+.rev-cta{text-align:center;margin-top:36px}
+@media(max-width:760px){.rev{grid-template-columns:1fr}}
+
+/* BOOKING */
+.book{background:var(--y);color:var(--ink)}
+.book .eyebrow{color:#5a4500}
+.book .sub{color:#3b2f00}
+.book h2 em{color:#111;background:rgba(255,255,255,.35);padding:0 8px;border-radius:6px}
+.book .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start}
+.form{background:#111;color:var(--txt);border-radius:24px;padding:30px;box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+.form h3{font-size:24px;margin:0 0 12px;color:var(--y)}
+.form h3:not(:first-child){margin-top:24px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opts label{position:relative;cursor:pointer}
+.opts input{position:absolute;opacity:0}
+.opts span{display:block;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;font-size:14px;font-weight:500;
+  transition:transform 160ms var(--ease-out),border-color 150ms ease,background-color 150ms ease,color 150ms ease}
+.opts label:active span{transform:scale(.97)}
+.opts input:checked+span{border-color:var(--y);background:rgba(255,196,0,.14);color:var(--y)}
+.opts input:focus-visible+span{outline:2px solid var(--y);outline-offset:2px}
+@media(hover:hover) and (pointer:fine){.opts label:hover span{border-color:var(--y)}}
+.f{display:grid;gap:12px}
+.f.two{grid-template-columns:1fr 1fr}
+input[type=text],input[type=tel],input[type=date],select,textarea{width:100%;padding:14px;border-radius:12px;border:1.5px solid var(--line);background:#1a1a1d;color:var(--txt);font:inherit;font-size:15px;transition:border-color 150ms ease}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--y)}
+input[type=date]{color-scheme:dark}
+textarea{min-height:90px;resize:vertical}
+.form .btn{width:100%;margin-top:18px}
+.note{font-size:12.5px;color:var(--mute);margin-top:12px;text-align:center}
+.ok{display:none;margin-top:16px;padding:14px;border-radius:12px;background:rgba(61,220,132,.12);border:1px solid #3ddc84;color:#3ddc84;font-weight:600;text-align:center}
+.ok.show{display:block;opacity:1;transform:none;transition:opacity 250ms var(--ease-out),transform 250ms var(--ease-out)}
+@starting-style{.ok.show{opacity:0;transform:scale(.95)}}
+.callbox{margin-top:30px;background:#111;color:var(--txt);border-radius:20px;padding:24px}
+.callbox a.t{font-family:'Barlow Condensed';font-weight:800;font-size:52px;color:var(--y);display:block;line-height:1.1}
+.callbox p{color:var(--mute);font-size:14px;margin-bottom:14px}
+@media(max-width:900px){.book .grid{grid-template-columns:1fr}}
+@media(max-width:480px){.f.two,.opts{grid-template-columns:1fr}}
+
+/* CONTACT */
+.contact .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;margin-top:40px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px}
+.box h3{font-size:24px;color:var(--y);margin-bottom:10px}
+.box p{margin-bottom:6px}
+.hrs{width:100%;border-collapse:collapse;margin:8px 0 22px;font-size:15px}
+.hrs td{padding:10px 0;border-bottom:1px solid var(--line)}
+.hrs td:last-child{text-align:right;font-weight:600}
+.mapbox{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);min-height:440px;position:relative;background:var(--card)}
+.mapbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.35) contrast(1.05)}
+.pin{position:absolute;left:14px;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:var(--y);color:var(--ink);font-weight:700;padding:10px 16px;border-radius:999px;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+@media(max-width:900px){.contact .grid{grid-template-columns:1fr}.mapbox{min-height:360px}}
+
+footer{background:#0a0a0b;border-top:1px solid var(--line);padding:34px 0 110px;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+footer .mk{opacity:.6;font-size:12.5px}
+
+/* STICKY MOBILE BAR */
+.bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(15,15,16,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.bar .btn{flex:1}
+@media(max-width:820px){.bar{display:flex}}
+
+/* SCROLL REVEAL: transitions (interruptible), start from translate + opacity, short stagger */
+.rv{opacity:0;transform:translateY(10px);transition:opacity 300ms var(--ease-out),transform 300ms var(--ease-out);transition-delay:calc(var(--i,0)*50ms)}
+.rv.in{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  .rv{transform:none}
+  @keyframes up{from{opacity:0}to{opacity:1}}
+  .marq div{animation:none}
+  .s::after{transition:none}
+}
+</style>
+</head>
+<body id="top">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></symbol>
+  <symbol id="i-fan" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 10C12 5 13 3 16 3M14 12c5 0 7 1 7 4M12 14c0 5-1 7-4 7M10 12c-5 0-7-1-7-4"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M4 7l16 10M20 7 4 17"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.2-.5-.5-2.2z"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo"><i>J</i><div>JAROCAR<small>VAG SERWIS</small></div></a>
+    <nav>
+      <a href="#opinie">Opinie</a>
+      <a href="#uslugi">Usługi</a>
+      <a href="#rezerwacja">Rezerwacja</a>
+      <a href="#kontakt">Kontakt</a>
+      <a class="btn btn-y btn-sm" href="tel:+48502064738"><svg class="i"><use href="#i-phone"/></svg>502 064 738</a>
+    </nav>
+  </div>
+  <div class="hazard"></div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap grid">
+    <div>
+      <div class="badge" style="--i:0"><span class="dot"></span>Otwarte dziś do 17:00 · Maliszew</div>
+      <h1 style="--i:1">Audi, VW, Skoda, Seat? <em>Wiemy,</em> co jej dolega.</h1>
+      <p class="lead" style="--i:2">Serwis specjalizujący się w samochodach grupy VAG. Diagnostyka komputerowa, elektronika, rozrząd, turbosprężarki i klimatyzacja. Z konkretną diagnozą, zanim zaczniemy wymieniać części.</p>
+      <div class="cta" style="--i:3">
+        <a class="btn btn-y" href="tel:+48502064738">Zadzwoń teraz</a>
+        <a class="btn btn-o" href="#rezerwacja">Umów wizytę online</a>
+      </div>
+      <div class="stats" style="--i:4">
+        <div><b>4,9</b><span>średnia w Google</span></div>
+        <div><b>37</b><span>opinii klientów</span></div>
+        <div><b>VAG</b><span>nasza specjalizacja</span></div>
+      </div>
+    </div>
+    <aside class="card-info">
+      <div class="lbl">Telefon do warsztatu</div>
+      <a class="tel" href="tel:+48502064738">502 064 738</a>
+      <div class="row"><div class="lbl">Adres</div><b>ul. Wspólna 74<br>05-300 Maliszew</b></div>
+      <div class="row"><div class="lbl">Godziny</div><b>Zamknięcie o 17:00</b><span class="open"><span class="dot"></span>Otwarte teraz</span></div>
+      <a class="btn btn-y" style="width:100%;margin-top:6px" href="tel:+48502064738">Zadzwoń</a>
+    </aside>
+  </div>
+</section>
+
+<section id="opinie">
+  <div class="wrap">
+    <div class="rev-head">
+      <div>
+        <div class="eyebrow">Opinie klientów</div>
+        <h2>Tak mówią <em>kierowcy</em></h2>
+        <p class="sub">Prawdziwe opinie z Google Maps.</p>
+      </div>
+      <div class="score">
+        <div class="n">4,9</div>
+        <div><span class="stars" role="img" aria-label="5 gwiazdek"></span><br><b>37 opinii w Google</b><small>Ocena warsztatu w Mapach</small></div>
+      </div>
+    </div>
+
+    <div class="rev" data-stagger>
+      <article class="r feat rv">
+        <span class="stars" role="img" aria-label="5 gwiazdek"></span>
+        <blockquote>Specjalista od elektroniki w grupie VAG i nie tylko. Dobry i pomocny człowiek. Zdecydowanie polecam, nawet jeśli trzeba poczekać.</blockquote>
+        <div class="who"><div class="av" style="background:#6f9a3a">R</div><div><b>Robert Kulma</b><small>tydzień temu</small></div><span class="gtag">Google</span></div>
+      </article>
+      <article class="r feat rv">
+        <span class="stars" role="img" aria-label="5 gwiazdek"></span>
+        <blockquote>Zna się na VAGu jak mało kto. Zanim podłączy komputer, to już nie raz wie, co z autem jest nie tak.</blockquote>
+        <div class="who"><div class="av" style="background:#22559c">P</div><div><b>Pawel Gadaj</b><small>Lokalny przewodnik · 3 miesiące temu</small></div><span class="gtag">Google</span></div>
+      </article>
+      <article class="r rv">
+        <span class="stars" role="img" aria-label="5 gwiazdek"></span>
+        <blockquote>A8 4.0 TFSI: wymiana rozrządu, turbin, odmy, czyszczenie dolotu itd. Przy odbiorze przygotowane szczegółowe zestawienie wymienionych…</blockquote>
+        <div class="who"><div class="av" style="background:#6a5fc1">C</div><div><b>Cyprian</b><small>10 miesięcy temu</small></div><span class="gtag">Google</span></div>
+      </article>
+      <article class="r rv">
+        <span class="stars" role="img" aria-label="5 gwiazdek"></span>
+        <blockquote>Bardzo cenię Pana za spokój, profesjonalizm i życzliwość. Mam ogromny szacunek do Pana pracy oraz całego warsztatu. Dziękuję za pomoc i…</blockquote>
+        <div class="who"><div class="av" style="background:#3c8fb5">B</div><div><b>BasharM Harateh</b><small>Lokalny przewodnik · 3 miesiące temu</small></div><span class="gtag">Google</span></div>
+      </article>
+    </div>
+
+    <div class="rev-cta">
+      <a class="btn btn-o" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=JaroCar+VAG+Serwis+Wsp%C3%B3lna+74+Maliszew">Czytaj wszystkie opinie w Google</a>
+    </div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div>
+  <span>Diagnostyka VAG</span><span>Elektronika</span><span>Rozrząd</span><span>Turbosprężarki</span><span>Klimatyzacja R-1234yf</span><span>Czyszczenie dolotu</span><span>Odmy</span>
+  <span>Diagnostyka VAG</span><span>Elektronika</span><span>Rozrząd</span><span>Turbosprężarki</span><span>Klimatyzacja R-1234yf</span><span>Czyszczenie dolotu</span><span>Odmy</span>
+</div></div>
+
+<section id="uslugi">
+  <div class="wrap">
+    <div class="eyebrow">Co robimy</div>
+    <h2>Usługi <em>dla VAG</em></h2>
+    <p class="sub">Zamiast zgadywać, najpierw podłączamy komputer i szukamy przyczyny. Dopiero potem wyceniamy naprawę.</p>
+    <div class="svc" data-stagger>
+      <a class="s rv" href="#rezerwacja"><div class="ic"><svg class="i"><use href="#i-monitor"/></svg></div><h3>Diagnostyka komputerowa</h3><p>Odczyt i analiza błędów w sterownikach aut koncernu VAG.</p><ul><li>Odczyt usterek</li><li>Analiza parametrów</li><li>Konkretna diagnoza</li></ul></a>
+      <a class="s rv" href="#rezerwacja"><div class="ic"><svg class="i"><use href="#i-zap"/></svg></div><h3>Elektronika samochodowa</h3><p>Usterki, których nie widać gołym okiem. Tu zaczyna się nasza przewaga.</p><ul><li>Sterowniki i moduły</li><li>Instalacja elektryczna</li><li>Trudne, nietypowe usterki</li></ul></a>
+      <a class="s rv" href="#rezerwacja"><div class="ic"><svg class="i"><use href="#i-gear"/></svg></div><h3>Rozrząd i silnik</h3><p>Wymiany i naprawy w silnikach benzynowych oraz diesla, także w większych jednostkach.</p><ul><li>Wymiana rozrządu</li><li>Odmy i dolot</li><li>Czyszczenie dolotu</li></ul></a>
+      <a class="s rv" href="#rezerwacja"><div class="ic"><svg class="i"><use href="#i-fan"/></svg></div><h3>Turbosprężarki</h3><p>Wymiana turbin i naprawy związane z doładowaniem.</p><ul><li>Wymiana turbin</li><li>Diagnoza ciśnienia</li><li>Kontrola układu dolotowego</li></ul></a>
+      <a class="s rv" href="#rezerwacja"><div class="ic"><svg class="i"><use href="#i-snow"/></svg></div><h3>Klimatyzacja</h3><p>Serwis na profesjonalnej stacji TEXA 707 Touch, obsługującej czynnik R-1234yf.</p><ul><li>Stacja TEXA 707 Touch</li><li>Czynnik R-1234yf</li><li>Kontrola układu</li></ul></a>
+      <a class="s rv" href="#rezerwacja"><div class="ic"><svg class="i"><use href="#i-wrench"/></svg></div><h3>Naprawy ogólne</h3><p>Opisz objaw, a powiemy, co sprawdzimy i kiedy możesz przyjechać.</p><ul><li>Zawieszenie i hamulce</li><li>Części eksploatacyjne</li><li>Zestawienie wymian przy odbiorze</li></ul></a>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow">Dlaczego JaroCar</div>
+      <h2>Mniej zgadywania, <em>więcej wiedzy</em></h2>
+      <div class="pts" data-stagger>
+        <div class="pt rv"><b>1</b><div><h4>Specjalizacja w grupie VAG</h4><p>Znamy te auta i ich typowe bolączki. Klienci piszą, że wie, co jest nie tak, zanim podłączy komputer.</p></div></div>
+        <div class="pt rv"><b>2</b><div><h4>Stare części wracają do Ciebie</h4><p>Przy odbiorze dostajesz wymienione części i możesz sam zobaczyć, co zostało zrobione.</p></div></div>
+        <div class="pt rv"><b>3</b><div><h4>Rzetelne rozliczenie</h4><p>Po naprawie dostajesz szczegółowe zestawienie wykonanych prac.</p></div></div>
+      </div>
+    </div>
+    <div class="ac rv">
+      <div>
+        <div class="big">4,9</div>
+        <span class="stars" role="img" aria-label="5 gwiazdek"></span>
+        <p>Średnia ocen w Google Maps z 37 opinii</p>
+        <div class="chips"><span>Audi</span><span>Volkswagen</span><span>Škoda</span><span>Seat</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="rezerwacja">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow">Rezerwacja</div>
+      <h2>Umów <em>wizytę</em></h2>
+      <p class="sub">Zaznacz, w czym możemy pomóc, i zostaw numer. Oddzwonimy i ustalimy termin. Klienci piszą, że warto poczekać na wolne miejsce, więc nie zwlekaj.</p>
+      <div class="callbox">
+        <div class="lbl">Najszybciej telefonicznie</div>
+        <a class="t" href="tel:+48502064738">502 064 738</a>
+        <p>Opisz, co dzieje się z autem, a powiemy, co sprawdzić i kiedy możesz przyjechać.</p>
+        <a class="btn btn-y" href="tel:+48502064738"><svg class="i"><use href="#i-phone"/></svg>Zadzwoń teraz</a>
+      </div>
+    </div>
+    <form class="form" id="f">
+      <h3>1. Czego potrzebujesz</h3>
+      <div class="opts">
+        <label><input type="radio" name="s" value="Diagnostyka" checked><span>Diagnostyka komputerowa</span></label>
+        <label><input type="radio" name="s" value="Elektronika"><span>Elektronika</span></label>
+        <label><input type="radio" name="s" value="Rozrząd / silnik"><span>Rozrząd / silnik</span></label>
+        <label><input type="radio" name="s" value="Turbosprężarka"><span>Turbosprężarka</span></label>
+        <label><input type="radio" name="s" value="Klimatyzacja"><span>Klimatyzacja</span></label>
+        <label><input type="radio" name="s" value="Nie wiem, potrzebuję diagnozy"><span>Nie wiem, potrzebuję diagnozy</span></label>
+      </div>
+      <h3>2. Preferowany dzień</h3>
+      <div class="f"><input type="date" id="d"></div>
+      <h3>3. Twoje dane</h3>
+      <div class="f two">
+        <input type="text" placeholder="Imię i nazwisko" required>
+        <input type="tel" placeholder="Telefon" required>
+      </div>
+      <div class="f" style="margin-top:12px">
+        <input type="text" placeholder="Marka i model auta (np. Audi A6 C7)">
+        <textarea placeholder="Co się dzieje? (opcjonalnie)"></textarea>
+      </div>
+      <button class="btn btn-y" type="submit">Wyślij prośbę o termin</button>
+      <div class="ok" id="ok" role="status">Dziękujemy! Oddzwonimy, żeby potwierdzić termin.</div>
+      <p class="note">Dane posłużą tylko do umówienia wizyty i oddzwonienia.</p>
+    </form>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="wrap">
+    <div class="eyebrow">Gdzie nas znaleźć</div>
+    <h2>Kon<em>takt</em></h2>
+    <div class="grid">
+      <div class="box">
+        <h3>Adres</h3>
+        <p><b>JAROCAR VAG Serwis</b></p>
+        <p>ul. Wspólna 74<br>05-300 Maliszew</p>
+        <p style="margin:10px 0 18px"><a href="tel:+48502064738" style="color:var(--y);font-weight:700;font-size:22px">502 064 738</a></p>
+        <h3 style="margin-top:14px">Godziny otwarcia</h3>
+        <table class="hrs">
+          <tr><td>Dziś</td><td>do 17:00</td></tr>
+          <tr><td>Pozostałe dni</td><td>do uzupełnienia</td></tr>
+        </table>
+        <div class="actions">
+          <a class="btn btn-y btn-sm" href="tel:+48502064738">Zadzwoń</a>
+          <a class="btn btn-o btn-sm" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Wsp%C3%B3lna+74%2C+05-300+Maliszew">Wyznacz trasę</a>
+        </div>
+      </div>
+      <div class="mapbox">
+        <iframe title="Mapa dojazdu do JAROCAR VAG Serwis" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Wsp%C3%B3lna+74%2C+05-300+Maliszew&hl=pl&z=16&output=embed"></iframe>
+        <div class="pin"><svg class="i"><use href="#i-pin"/></svg>Wspólna 74, Maliszew</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© JAROCAR VAG Serwis · ul. Wspólna 74, 05-300 Maliszew · tel. 502 064 738</div>
+    <div class="mk">Makieta strony · wersja demonstracyjna</div>
+  </div>
+</footer>
+
+<div class="bar">
+  <a class="btn btn-y" href="tel:+48502064738"><svg class="i"><use href="#i-phone"/></svg>Zadzwoń</a>
+  <a class="btn btn-o" href="#rezerwacja">Umów wizytę</a>
+</div>
+
+<script>
+// scroll reveal: short stagger (50ms) inside each group, then drop the helper classes so hover transitions stay instant
+document.querySelectorAll('[data-stagger]').forEach(g=>g.querySelectorAll('.rv').forEach((el,i)=>el.style.setProperty('--i',i)));
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  const el=e.target;io.unobserve(el);el.classList.add('in');
+  setTimeout(()=>{el.classList.remove('rv','in');el.style.removeProperty('--i')},700);
+}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+const d=document.getElementById('d');d.min=new Date().toISOString().split('T')[0];
+document.getElementById('f').addEventListener('submit',e=>{
+  e.preventDefault();
+  document.getElementById('ok').classList.add('show');
+  e.target.reset();
+});
+</script>
+</body>
+</html>
